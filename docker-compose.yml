@@ -1,0 +1,11 @@
+services:
+  postgres-bolsa:
+    image: postgres:12.4
+    volumes:
+      - ./bolsa.bkp:/docker-entrypoint-initdb.d/bolsa.sql
+    environment:
+      POSTGRES_USER: seqwdhpiixscbv
+      POSTGRES_PASSWORD: Postgres@Bolsa
+      POSTGRES_DB: bolsa
+    ports:
+      - "5432:5432"
