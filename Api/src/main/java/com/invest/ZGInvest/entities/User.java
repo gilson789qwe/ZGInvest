@@ -2,6 +2,7 @@ package com.invest.ZGInvest.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,12 +14,15 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
-    private Date data;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant data;
+    @Column(columnDefinition = "TEXT")
     private String tipoOperacao;
     private String mercado;
     private String prazo;
     private String instrument;
     private String especificacao;
+
     private Integer quantidade;
     private Integer preco;
     private Integer valorTotal;
@@ -27,7 +31,7 @@ public class User implements Serializable {
 
     }
 
-    public User(Long id, Date data, String tipoOperacao, String mercado, String prazo, String instrument, String especificacao, Integer quantidade, Integer preco, Integer valorTotal) {
+    public User(Long id, Instant data, String tipoOperacao, String mercado, String prazo, String instrument, String especificacao, Integer quantidade, Integer preco, Integer valorTotal) {
         this.id = id;
         this.data = data;
         this.tipoOperacao = tipoOperacao;
@@ -48,11 +52,11 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public Date getData() {
+    public Instant getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Instant data) {
         this.data = data;
     }
 
