@@ -16,15 +16,20 @@ public class User implements Serializable {
     private  Long id;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant data;
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", name = "tipo_operacao", nullable = true)
     private String tipoOperacao;
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String mercado;
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String prazo;
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String instrument;
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String especificacao;
 
     private Integer quantidade;
     private Integer preco;
+    @Column(name = "valor_total")
     private Integer valorTotal;
 
     public User(){

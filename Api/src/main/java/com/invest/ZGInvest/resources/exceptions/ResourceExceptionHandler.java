@@ -1,6 +1,6 @@
 package com.invest.ZGInvest.resources.exceptions;
 
-import com.invest.ZGInvest.services.exceptions.EntityNotFoundException;
+import com.invest.ZGInvest.services.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,8 +13,8 @@ import java.time.Instant;
 public class ResourceExceptionHandler {
 
     private Integer status = HttpStatus.NOT_FOUND.value();
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<StandarError> entityNotFound(EntityNotFoundException e, HttpServletRequest request){
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<StandarError> entityNotFound(ResourceNotFoundException e, HttpServletRequest request){
         StandarError err = new StandarError();
         err.setTimestamp(Instant.now());
         err.setStatus(status);
