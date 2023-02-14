@@ -22,6 +22,8 @@ public class Instrument implements Serializable {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant date;
 
+    public Instrument(){}
+
     public Instrument(Long id, String simbol, Integer price, Instant date){
         this.id = id;
         this.simbol = simbol;
