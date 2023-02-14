@@ -1,17 +1,13 @@
-package com.invest.ZGInvest.entities;
+package com.invest.ZGInvest.dto;
 
-import javax.persistence.*;
+import com.invest.ZGInvest.entities.User;
+
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
-@Entity
-@Table(name = "user_trade")
-public class User implements Serializable {
+public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     private Date data;
     private String tipoOperacao;
@@ -23,11 +19,9 @@ public class User implements Serializable {
     private Integer preco;
     private Integer valorTotal;
 
-    public User(){
+    public UserDTO(){}
 
-    }
-
-    public User(Long id, Date data, String tipoOperacao, String mercado, String prazo, String instrument, String especificacao, Integer quantidade, Integer preco, Integer valorTotal) {
+    public UserDTO(Long id, Date data, String tipoOperacao, String mercado, String prazo, String instrument, String especificacao, Integer quantidade, Integer preco, Integer valorTotal) {
         this.id = id;
         this.data = data;
         this.tipoOperacao = tipoOperacao;
@@ -38,6 +32,19 @@ public class User implements Serializable {
         this.quantidade = quantidade;
         this.preco = preco;
         this.valorTotal = valorTotal;
+    }
+
+    public UserDTO(User entity){
+        this.id = entity.getId();
+        this.data = entity.getData();
+        this.tipoOperacao = entity.getTipoOperacao();
+        this.mercado = entity.getMercado();
+        this.prazo = entity.getPrazo();
+        this.instrument = entity.getInstrument();
+        this.especificacao = entity.getEspecificacao();
+        this.quantidade = entity.getQuantidade();
+        this.preco = entity.getPreco();
+        this.valorTotal = entity.getValorTotal();
     }
 
     public Long getId() {
@@ -118,18 +125,5 @@ public class User implements Serializable {
 
     public void setValorTotal(Integer valorTotal) {
         this.valorTotal = valorTotal;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }

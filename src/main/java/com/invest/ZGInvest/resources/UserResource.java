@@ -1,6 +1,6 @@
 package com.invest.ZGInvest.resources;
 
-import com.invest.ZGInvest.entities.User;
+import com.invest.ZGInvest.dto.UserDTO;
 import com.invest.ZGInvest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,8 @@ public class UserResource {
     @Autowired
     private UserService service;
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-        List<User> list = service.findAll();
+    public ResponseEntity<List<UserDTO>> findAll(){
+        List<UserDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 }
