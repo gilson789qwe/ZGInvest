@@ -3,8 +3,10 @@ package com.invest.ZGInvest.services;
 import com.invest.ZGInvest.dto.UserDTO;
 import com.invest.ZGInvest.entities.User;
 import com.invest.ZGInvest.repositories.UserRepository;
+import com.invest.ZGInvest.services.exceptions.DatabaseException;
 import com.invest.ZGInvest.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -78,6 +80,9 @@ public class UserService {
             repository.deleteById(id);
         }catch (EmptyResultDataAccessException e){
             throw new ResourceNotFoundException("Id não encontrado" + id);
+        }
+        catch (DataIntegrityViolationException e){
+            throw new DatabaseException("Violação de integridade");
         }
     }
 }
