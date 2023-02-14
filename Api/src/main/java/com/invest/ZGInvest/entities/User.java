@@ -3,7 +3,9 @@ package com.invest.ZGInvest.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_trade")
@@ -30,6 +32,13 @@ public class User implements Serializable {
     private Integer preco;
     @Column(name = "valor_total")
     private Integer valorTotal;
+
+    @OneToMany
+    @JoinColumns(
+            @JoinColumn(name="simbol", referencedColumnName="instrument" )
+    )
+    Set<Instrument> instruments = new HashSet<>();
+
 
     public User(){
 
@@ -124,8 +133,13 @@ public class User implements Serializable {
         return valorTotal;
     }
 
+
     public void setValorTotal(Integer valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public Set<Instrument> getInstruments() {
+        return instruments;
     }
 
     @Override

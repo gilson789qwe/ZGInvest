@@ -1,10 +1,13 @@
 package com.invest.ZGInvest.dto;
 
+import com.invest.ZGInvest.entities.Instrument;
 import com.invest.ZGInvest.entities.User;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -19,6 +22,8 @@ public class UserDTO implements Serializable {
     private Integer quantidade;
     private Integer preco;
     private Integer valorTotal;
+
+    private List<InstrumentDTO> instruments = new ArrayList<>();
 
     public UserDTO(){}
 
@@ -46,6 +51,11 @@ public class UserDTO implements Serializable {
         this.quantidade = entity.getQuantidade();
         this.preco = entity.getPreco();
         this.valorTotal = entity.getValorTotal();
+    }
+
+    public  UserDTO(User entity, Set<Instrument> instruments){
+        this(entity);
+        instruments.forEach(inst -> this.instruments.add(new InstrumentDTO(inst)));
     }
 
     public Long getId() {
@@ -126,5 +136,9 @@ public class UserDTO implements Serializable {
 
     public void setValorTotal(Integer valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public List<InstrumentDTO> getInstruments() {
+        return instruments;
     }
 }
