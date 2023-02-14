@@ -32,7 +32,7 @@ public class UserService {
     public UserDTO findById(Long id) {
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entidade não encontrada"));
-        return new UserDTO(entity);
+        return new UserDTO(entity, entity.getInstruments());
     }
 
     @Transactional
