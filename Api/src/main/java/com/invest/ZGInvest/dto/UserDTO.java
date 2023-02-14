@@ -3,13 +3,14 @@ package com.invest.ZGInvest.dto;
 import com.invest.ZGInvest.entities.User;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private  Long id;
-    private Date data;
+    private Instant data;
     private String tipoOperacao;
     private String mercado;
     private String prazo;
@@ -21,7 +22,7 @@ public class UserDTO implements Serializable {
 
     public UserDTO(){}
 
-    public UserDTO(Long id, Date data, String tipoOperacao, String mercado, String prazo, String instrument, String especificacao, Integer quantidade, Integer preco, Integer valorTotal) {
+    public UserDTO(Long id, Instant data, String tipoOperacao, String mercado, String prazo, String instrument, String especificacao, Integer quantidade, Integer preco, Integer valorTotal) {
         this.id = id;
         this.data = data;
         this.tipoOperacao = tipoOperacao;
@@ -55,11 +56,11 @@ public class UserDTO implements Serializable {
         this.id = id;
     }
 
-    public Date getData() {
+    public Instant getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Instant data) {
         this.data = data;
     }
 
