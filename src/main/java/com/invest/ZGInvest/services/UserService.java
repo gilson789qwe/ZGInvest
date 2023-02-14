@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,5 +22,12 @@ public class UserService {
     public List<UserDTO> findAll(){
         List<User> list = repository.findAll();
         return list.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public UserDTO findById(Long id) {
+        Optional<User> obj = repository.findById(id);
+        User entity = obj.get();
+        return new UserDTO(entity);
     }
 }
