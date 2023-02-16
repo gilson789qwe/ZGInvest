@@ -1,0 +1,35 @@
+<p-card *ngIf="!isLoading">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Valor Total</th>
+            <th style="width: 5rem"></th>
+        </tr>
+    </ng-template>
+    <tr>
+        <td>R$ {{item['valorTotal']}},00</td>
+    </tr>
+    <ng-template pTemplate="footer">
+        Valor de todos os atributos 
+    </ng-template>
+</p-card>
+<div class="card">
+    <p-table [value]="instruments" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Data</th>
+                <th>Símbolo</th>
+                <th>Preço</th>
+                <th style="width: 5rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-instruments>
+            <tr>
+                <td>{{instruments.id}}</td>
+                <td>{{instruments.date | date:'dd/MM/yyyy HH:mm:ss' }}</td>
+                <td>{{instruments.simbol}}</td>
+                <td>R$ {{instruments.price}},00</td>
+            </tr>
+         </ng-template>
+    </p-table>
+</div>

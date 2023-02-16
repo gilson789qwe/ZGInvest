@@ -32,7 +32,7 @@ public class User implements Serializable {
     private Integer preco;
     @Column(name = "valor_total")
     private Integer valorTotal;
-    
+
     @OneToMany
     @JoinColumns(
             @JoinColumn(name="simbol", referencedColumnName="instrument" )

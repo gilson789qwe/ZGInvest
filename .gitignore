@@ -31,3 +31,45 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Compiled output
+front/zginvest/dist
+front/zginvest/tmp
+front/zginvest/out-tsc
+front/zginvest/bazel-out
+
+# Node
+/front/zginvest/node_modules
+front/zginvest/npm-debug.log
+front/zginvest/yarn-error.log
+
+# IDEs and editors
+front/zginvest/.idea/
+front/zginvest/.project
+front/zginvest/.classpath
+front/zginvest/.c9/
+front/zginvest/*.launch
+front/zginvest/.settings/
+front/zginvest/*.sublime-workspace
+
+# Visual Studio Code
+front/zginvest/.vscode/*
+!front/zginvest/.vscode/settings.json
+!front/zginvest/.vscode/tasks.json
+!front/zginvest/.vscode/launch.json
+!front/zginvest/.vscode/extensions.json
+front/zginvest/.history/*
+
+# Miscellaneous
+front/zginvest/.angular/cache
+front/zginvest/.sass-cache/
+front/zginvest/connect.lock
+front/zginvest/coverage
+front/zginvest/libpeerconnection.log
+front/zginvest/testem.log
+front/zginvest/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
